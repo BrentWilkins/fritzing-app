@@ -695,6 +695,15 @@ double TextUtils::convertToInches(const QString & string) {
 	return retval;
 }
 
+QString TextUtils::convertOverline(QString & string) {
+    QString s = "";
+    if (string.startsWith("!")) {	// Overlined text starts with '!'
+        s = "text-decoration = \"overline\"";
+        string.remove(QChar('!'));
+    }
+    return s;
+}
+
 QString TextUtils::escapeAnd(const QString & string) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
 	QString s = Qt::escape(string);
